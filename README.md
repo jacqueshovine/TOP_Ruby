@@ -66,4 +66,47 @@ The core function. Takes one parameter :
 
 The function returns an array of Days that represent the best day for buying a stock, and the best day for selling that stock (according to the array given in input).
 
+# Project 3 : Substrings
 
+## Objectives
+
+Implement a method #substrings that takes a word as the first argument and then an array of valid substrings (your dictionary) as the second argument. It should return a hash listing each substring (case insensitive) that was found in the original string and how many times it was found.
+
+```
+  > dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+  => ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+  > substrings("below", dictionary)
+  => { "below" => 1, "low" => 1 }
+```
+
+Next, make sure your method can handle multiple words:
+
+```
+> substrings("Howdy partner, sit down! How's it going?", dictionary)
+  => { "down" => 1, "how" => 2, "howdy" => 1,"go" => 1, "going" => 1, "it" => 2, "i" => 3, "own" => 1,"part" => 1,"partner" => 1,"sit" => 1 }
+```
+## My solution
+
+The [substrings](###substrings) function first lowercases the given string. Then it starts looping through the dictionary.  
+For each word, the string is scanned to find the number of occurences of this word in the string.  
+
+```
+  dictionary.each do |e|
+    if string.scan(/#{e}/).count > 0
+      hash[e] = string.scan(/#{e}/).count 
+    end
+  end
+```
+
+If one occurence or more is found, the word and the amount of occurences are pushed in the hash.
+
+## Functions
+
+### substrings(String, Array)
+
+The core function. Takes 2 parameters :
+
+- A string
+- An array of strings representing a dictionary
+
+The function returns a hash containing words from the dictionary that have been matched in the given string, and the count of each occurence.
