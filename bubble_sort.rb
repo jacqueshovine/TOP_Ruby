@@ -6,8 +6,6 @@ def bubble_sort(array)
       if array[i] > array[i+1]
         array[i], array[i+1] = array[i+1], array[i]
         sorted = false
-      else
-        next
       end
     end
     n -= 1 # After each for loop, we know that the last element is sorted. We avoid to check the n last elements each time.
@@ -18,7 +16,7 @@ def bubble_sort(array)
 end
 
 def bubble_sort_by(array)
-  n = array.length-1
+  n = array.length - 1
   if array.all? { |e| e.is_a? String }
     loop do
       sorted = true
@@ -26,8 +24,6 @@ def bubble_sort_by(array)
         if yield(array[i], array[i+1]) > 0
           array[i], array[i+1] = array[i+1], array[i]
           sorted = false
-        else
-          next
         end
       end
       n -= 1
